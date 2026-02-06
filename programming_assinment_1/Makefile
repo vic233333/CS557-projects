@@ -71,15 +71,9 @@ exp-windows:
 	set OMP_DYNAMIC=FALSE&& set OMP_PROC_BIND=close&& set OMP_PLACES=cores&& set OMP_NUM_THREADS=24&& .\$(IKJ_EXE)
 
 exp-linux:
-	echo "===== BASE (i-j-k) with dynamic=false, proc_bind=close, places=cores, threads=12 ====="
-	OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores OMP_NUM_THREADS=12 ./$(EXE)
-	echo "===== KJI (k-j-i) with dynamic=false, proc_bind=close, places=cores, threads=12 ====="
-	OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores OMP_NUM_THREADS=12 ./$(KJI_EXE)
-	echo "===== IKJ (i-k-j) with dynamic=false, proc_bind=close, places=cores, threads=12 ====="
-	OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores OMP_NUM_THREADS=12 ./$(IKJ_EXE)
-	echo "===== BASE (i-j-k) with dynamic=false, proc_bind=close, places=cores, threads=24 ====="
-	OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores OMP_NUM_THREADS=24 ./$(EXE)
-	echo "===== KJI (k-j-i) with dynamic=false, proc_bind=close, places=cores, threads=24 ====="
-	OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores OMP_NUM_THREADS=24 ./$(KJI_EXE)
-	echo "===== IKJ (i-k-j) with dynamic=false, proc_bind=close, places=cores, threads=24 ====="
-	OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores OMP_NUM_THREADS=24 ./$(IKJ_EXE)
+	echo "===== BASE (i-j-k) with dynamic=false, proc_bind=close, places=cores, threads=8 ====="
+	OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores OMP_NUM_THREADS=8 ./${EXE}
+	echo "===== KJI (k-j-i) with dynamic=false, proc_bind=close, places=cores, threads=8 ====="
+	OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores OMP_NUM_THREADS=8 ./${KJI_EXE}
+	echo "===== IKJ (i-k-j) with dynamic=false, proc_bind=close, places=cores, threads=8 ====="
+	OMP_DYNAMIC=FALSE OMP_PROC_BIND=close OMP_PLACES=cores OMP_NUM_THREADS=8 ./${IKJ_EXE}
