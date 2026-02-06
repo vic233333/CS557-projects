@@ -28,8 +28,15 @@ build-linux:
 run:
 	.\$(EXE)
 
-clean:
+clean-windows:
 	-del /Q $(EXE) 2>NUL
+	-del /Q $(KJI_EXE) 2>NUL
+	-del /Q $(IKJ_EXE) 2>NUL
+
+clean-linux:
+	rm -f $(EXE)
+	rm -f $(KJI_EXE)
+	rm -f $(IKJ_EXE)
 
 test:
 	set OMP_NUM_THREADS=1&& .\$(EXE)
