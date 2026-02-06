@@ -1,0 +1,333 @@
+###############################################################################
+# C / C++ build artifacts (generic)
+###############################################################################
+*.o
+*.obj
+*.lo
+*.slo
+*.a
+*.lib
+*.la
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+
+# Debug symbols / profiles
+*.pdb
+*.idb
+*.ilk
+*.dSYM/
+*.dSYM/**
+
+# Dependency files
+*.d
+*.dep
+*.tmp
+
+# Precompiled headers
+*.gch
+*.pch
+
+###############################################################################
+# CMake (project file + generated files)
+###############################################################################
+# You said CMakeLists.txt can be excluded:
+CMakeLists.txt
+**/CMakeLists.txt
+
+# Common out-of-source build dirs
+/build/
+/build-*/
+/cmake-build-*/
+/out/
+/bin/
+/lib/
+/dist/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+compile_commands.json
+
+# CPack
+_CPack_Packages/
+CPackConfig.cmake
+CPackSourceConfig.cmake
+
+###############################################################################
+# Autotools / other build systems
+###############################################################################
+# Autotools
+autom4te.cache/
+aclocal.m4
+compile
+config.*
+configure
+depcomp
+install-sh
+missing
+m4/
+ltmain.sh
+
+###############################################################################
+# Testing / benchmarking output
+###############################################################################
+Testing/
+CTestCostData.txt
+*.log
+*.trace
+*.prof
+*.gcno
+*.gcda
+*.gcov
+*.perf
+vgcore.*
+core
+core.*
+
+###############################################################################
+# Parallel/HPC tooling (common)
+###############################################################################
+*.rank
+*.mpi
+*.ompt
+*.optrpt
+*.optrpt.json
+
+###############################################################################
+# OS-specific
+###############################################################################
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Visual Studio / MSBuild
+.vs/
+*.vcxproj*
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sdf
+*.ipch
+*.tlog
+*.lastbuildstate
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+x64/
+Win32/
+
+# Linux
+*~
+.nfs*
+
+###############################################################################
+# Editors / IDEs
+###############################################################################
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains (CLion, etc.)
+.idea/
+cmake-build-debug/
+cmake-build-release/
+
+# Vim / Emacs
+.*.swp
+.*.swo
+*.swp
+*.swo
+*.bak
+*.tmp
+*~
+
+###############################################################################
+# Environment / misc
+###############################################################################
+.env
+.env.*
+.cache/
+.DS_Store
+###############################################################################
+# C / C++ build artifacts (generic)
+###############################################################################
+*.o
+*.obj
+*.lo
+*.slo
+*.a
+*.lib
+*.la
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.out
+*.app
+
+# Debug symbols / profiles
+*.pdb
+*.idb
+*.ilk
+*.dSYM/
+*.dSYM/**
+
+# Dependency files
+*.d
+*.dep
+*.tmp
+
+# Precompiled headers
+*.gch
+*.pch
+
+###############################################################################
+# CMake (project file + generated files)
+###############################################################################
+# You said CMakeLists.txt can be excluded:
+CMakeLists.txt
+**/CMakeLists.txt
+
+# Common out-of-source build dirs
+/build/
+/build-*/
+/cmake-build-*/
+/out/
+/bin/
+/lib/
+/dist/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+compile_commands.json
+
+# CPack
+_CPack_Packages/
+CPackConfig.cmake
+CPackSourceConfig.cmake
+
+###############################################################################
+# Make / Autotools / other build systems
+###############################################################################
+# IMPORTANT: Do NOT ignore Makefile (you want to commit it)
+# (intentionally not listing Makefile here)
+
+# Autotools
+autom4te.cache/
+aclocal.m4
+compile
+config.*
+configure
+depcomp
+install-sh
+missing
+m4/
+ltmain.sh
+
+###############################################################################
+# Testing / benchmarking output
+###############################################################################
+Testing/
+CTestCostData.txt
+*.log
+*.trace
+*.prof
+*.gcno
+*.gcda
+*.gcov
+*.perf
+vgcore.*
+core
+core.*
+
+###############################################################################
+# Parallel/HPC tooling (common)
+###############################################################################
+*.rank
+*.mpi
+*.ompt
+*.optrpt
+*.optrpt.json
+
+###############################################################################
+# OS-specific
+###############################################################################
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Visual Studio / MSBuild
+.vs/
+*.vcxproj*
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sdf
+*.ipch
+*.tlog
+*.lastbuildstate
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+x64/
+Win32/
+
+# Linux
+*~
+.nfs*
+
+###############################################################################
+# Editors / IDEs
+###############################################################################
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains (CLion, etc.)
+.idea/
+cmake-build-debug/
+cmake-build-release/
+
+# Vim / Emacs
+.*.swp
+.*.swo
+*.swp
+*.swo
+*.bak
+*.tmp
+*~
+
+###############################################################################
+# Environment / misc
+###############################################################################
+.env
+.env.*
+.cache/
+.DS_Store
