@@ -35,9 +35,6 @@
 ###############################################################################
 # CMake (project file + generated files)
 ###############################################################################
-# You said CMakeLists.txt can be excluded:
-CMakeLists.txt
-**/CMakeLists.txt
 
 # Common out-of-source build dirs
 /build/
