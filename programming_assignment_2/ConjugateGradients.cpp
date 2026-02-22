@@ -10,6 +10,7 @@
 
 // External timer declarations for CG algorithm profiling
 extern Timer timerCG; // Entire CG algorithm
+extern Timer timerLaplacianSaxpyAndNorm_line2; // LaplacianSaxpyAndNorm(x, f, r) - outside loop (merged version)
 extern Timer timerLaplacian_line2; // ComputeLaplacian(x, z) - outside loop
 extern Timer timerSaxpy_line2; // Saxpy(z, f, r, -1) - outside loop
 extern Timer timerNorm_line2; // Norm(r) - outside loop
@@ -38,6 +39,11 @@ void ConjugateGradients(
     timerCG.Restart();
 
     // Algorithm : Line 2
+#ifdef USE_MERGED
+    timerLaplacianSaxpyAndNorm_line2.Restart();
+    float nu = LaplacianSaxpyAndNorm(x, f, r);
+    timerLaplacianSaxpyAndNorm_line2.Pause();
+#else
     timerLaplacian_line2.Restart();
     ComputeLaplacian(x, z);
     timerLaplacian_line2.Pause();
@@ -49,6 +55,7 @@ void ConjugateGradients(
     timerNorm_line2.Restart();
     float nu = Norm(r);
     timerNorm_line2.Pause();
+#endif
 
     // Algorithm : Line 3
     if (nu < nuMax)

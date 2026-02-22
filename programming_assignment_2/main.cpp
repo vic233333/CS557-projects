@@ -4,6 +4,7 @@
 
 // Timer declarations for CG algorithm profiling
 Timer timerCG; // Entire CG algorithm
+Timer timerLaplacianSaxpyAndNorm_line2; // LaplacianSaxpyAndNorm(x, f, r) - outside loop (merged version)
 Timer timerLaplacian_line2; // ComputeLaplacian(x, z) - outside loop
 Timer timerSaxpy_line2; // Saxpy(z, f, r, -1) - outside loop
 Timer timerNorm_line2; // Norm(r) - outside loop
@@ -39,6 +40,7 @@ int main(int argc, char* argv[])
 
     // Reset timers before CG
     timerCG.Reset();
+    timerLaplacianSaxpyAndNorm_line2.Reset();
     timerLaplacian_line2.Reset();
     timerSaxpy_line2.Reset();
     timerNorm_line2.Reset();
@@ -82,6 +84,7 @@ int main(int argc, char* argv[])
 
     // Print timers after CG
     timerCG.Print("Total CG: ");
+    timerLaplacianSaxpyAndNorm_line2.Print("LaplacianSaxpyAndNorm (line 2): ");
     timerLaplacian_line2.Print("ComputeLaplacian (line 2): ");
     timerSaxpy_line2.Print("Saxpy (line 2): ");
     timerNorm_line2.Print("Norm (line 2): ");

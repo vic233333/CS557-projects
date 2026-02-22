@@ -59,3 +59,26 @@ float LaplacianAndDot(
 
     return static_cast<float>(result);
 }
+
+float LaplacianSaxpyAndNorm(
+    const float (&x)[XDIM][YDIM][ZDIM],
+    const float (&f)[XDIM][YDIM][ZDIM],
+    float (&r)[XDIM][YDIM][ZDIM])
+{
+    float result = 0.f;
+
+#pragma omp parallel for reduction(max:result)
+    for (int i = 1; i < XDIM-1; i++)
+    for (int j = 1; j < YDIM-1; j++)
+    for (int k = 1; k < ZDIM-1; k++) {
+        const float lx =
+        -6 * x[i][j][k]
+        + x[i+1][j][k] + x[i-1][j][k]
+        + x[i][j+1][k] + x[i][j-1][k]
+        + x[i][j][k+1] + x[i][j][k-1];
+        r[i][j][k] = -lx + f[i][j][k];  // we do not need to write z to memory, so we can directly compute r here
+        result = std::max(result, std::abs(r[i][j][k]));
+    }
+
+    return result;
+}

@@ -23,3 +23,10 @@ void DoubleSaxpy(
 float LaplacianAndDot(
     const float (&p)[XDIM][YDIM][ZDIM],
     float (&z)[XDIM][YDIM][ZDIM]);
+
+// Merged: ComputeLaplacian(x,z) + Saxpy(z,f,r,-1) + Norm(r)
+// Computes r = f - Lx, returns max|r|, z not needed
+float LaplacianSaxpyAndNorm(
+    const float (&x)[XDIM][YDIM][ZDIM],
+    const float (&f)[XDIM][YDIM][ZDIM],
+    float (&r)[XDIM][YDIM][ZDIM]);
