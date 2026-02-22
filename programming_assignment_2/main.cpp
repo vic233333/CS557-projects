@@ -16,6 +16,7 @@ Timer timerSaxpy_line8; // Saxpy(z, r, r, -alpha) - inside loop
 Timer timerNorm_line8; // Norm(r) - inside loop
 Timer timerCopy_line13; // Copy(r, z) - inside loop
 Timer timerInnerProduct_line13; // InnerProduct(z, r) - inside loop
+Timer timerDoubleSaxpy_line16; // DoubleSaxpy(x, r, p, alpha, beta) - inside loop (merged version)
 Timer timerSaxpy_line16a; // Saxpy(p, x, x, alpha) - inside loop
 Timer timerSaxpy_line16b; // Saxpy(p, r, p, beta) - inside loop
 
@@ -49,6 +50,7 @@ int main(int argc, char* argv[])
     timerNorm_line8.Reset();
     timerCopy_line13.Reset();
     timerInnerProduct_line13.Reset();
+    timerDoubleSaxpy_line16.Reset();
     timerSaxpy_line16a.Reset();
     timerSaxpy_line16b.Reset();
 
@@ -90,6 +92,7 @@ int main(int argc, char* argv[])
     timerNorm_line8.Print("Norm (line 8): ");
     timerCopy_line13.Print("Copy (line 13): ");
     timerInnerProduct_line13.Print("InnerProduct (line 13): ");
+    timerDoubleSaxpy_line16.Print("DoubleSaxpy (line 16): ");
     timerSaxpy_line16a.Print("Saxpy (line 16a): ");
     timerSaxpy_line16b.Print("Saxpy (line 16b): ");
 

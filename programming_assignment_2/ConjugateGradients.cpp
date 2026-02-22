@@ -22,6 +22,7 @@ extern Timer timerSaxpy_line8; // Saxpy(z, r, r, -alpha) - inside loop
 extern Timer timerNorm_line8; // Norm(r) - inside loop
 extern Timer timerCopy_line13; // Copy(r, z) - inside loop
 extern Timer timerInnerProduct_line13; // InnerProduct(z, r) - inside loop
+extern Timer timerDoubleSaxpy_line16; // DoubleSaxpy(x, r, p, alpha, beta) - inside loop (merged version)
 extern Timer timerSaxpy_line16a; // Saxpy(p, x, x, alpha) - inside loop
 extern Timer timerSaxpy_line16b; // Saxpy(p, r, p, beta) - inside loop
 
@@ -137,6 +138,11 @@ void ConjugateGradients(
         rho = rho_new;
 
         // Algorithm : Line 16
+#ifdef USE_MERGED
+        timerDoubleSaxpy_line16.Restart();
+        DoubleSaxpy(x, r, p, alpha, beta);
+        timerDoubleSaxpy_line16.Pause();
+#else
         timerSaxpy_line16a.Restart();
         Saxpy(p, x, x, alpha);
         timerSaxpy_line16a.Pause();
@@ -144,6 +150,7 @@ void ConjugateGradients(
         timerSaxpy_line16b.Restart();
         Saxpy(p, r, p, beta);
         timerSaxpy_line16b.Pause();
+#endif
 
         if (writeIterations) WriteAsImage("x", x, k, 0, 127);
     }
