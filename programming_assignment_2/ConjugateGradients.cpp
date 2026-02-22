@@ -4,6 +4,7 @@
 #include "Reductions.h"
 #include "Utilities.h"
 #include "Timer.h"
+#include "MergedKernels.h"
 
 #include <iostream>
 
@@ -16,6 +17,7 @@ extern Timer timerCopy_line4; // Copy(r, p) - outside loop
 extern Timer timerInnerProduct_line4; // InnerProduct(p, r) - outside loop
 extern Timer timerLaplacian_line6; // ComputeLaplacian(p, z) - inside loop (MOST IMPORTANT)
 extern Timer timerInnerProduct_line6; // InnerProduct(p, z) - inside loop
+extern Timer timerSaxpyAndNorm_line8; // SaxpyAndNorm(z, r, alpha) - inside loop (merged version)
 extern Timer timerSaxpy_line8; // Saxpy(z, r, r, -alpha) - inside loop
 extern Timer timerNorm_line8; // Norm(r) - inside loop
 extern Timer timerCopy_line13; // Copy(r, z) - inside loop
@@ -80,6 +82,11 @@ void ConjugateGradients(
         float alpha = rho / sigma;
 
         // Algorithm : Line 8
+#ifdef USE_MERGED
+        timerSaxpyAndNorm_line8.Restart();
+        nu = SaxpyAndNorm(z, r, alpha);
+        timerSaxpyAndNorm_line8.Pause();
+#else
         timerSaxpy_line8.Restart();
         Saxpy(z, r, r, -alpha);
         timerSaxpy_line8.Pause();
@@ -87,6 +94,7 @@ void ConjugateGradients(
         timerNorm_line8.Restart();
         nu = Norm(r);
         timerNorm_line8.Pause();
+#endif
 
         // Algorithm : Lines 9-12
         if (nu < nuMax || k == kMax)
@@ -101,6 +109,17 @@ void ConjugateGradients(
             return;
         }
 
+#ifdef USE_MERGED
+        // Algorithm : Line 13
+        // Copy(r, z) eliminated - z = r at this point, so InnerProduct(z,r) = InnerProduct(r,r)
+        // timerCopy_line13.Restart();
+        // Copy(r, z);
+        // timerCopy_line13.Pause();
+
+        timerInnerProduct_line13.Restart();
+        float rho_new = InnerProduct(r, r);
+        timerInnerProduct_line13.Pause();
+#else
         // Algorithm : Line 13
         timerCopy_line13.Restart();
         Copy(r, z);
@@ -109,6 +128,7 @@ void ConjugateGradients(
         timerInnerProduct_line13.Restart();
         float rho_new = InnerProduct(z, r);
         timerInnerProduct_line13.Pause();
+#endif
 
         // Algorithm : Line 14
         float beta = rho_new / rho;
