@@ -9,6 +9,7 @@ Timer timerSaxpy_line2; // Saxpy(z, f, r, -1) - outside loop
 Timer timerNorm_line2; // Norm(r) - outside loop
 Timer timerCopy_line4; // Copy(r, p) - outside loop
 Timer timerInnerProduct_line4; // InnerProduct(p, r) - outside loop
+Timer timerLaplacianAndDot_line6; // LaplacianAndDot(p, z) - inside loop (merged version)
 Timer timerLaplacian_line6; // ComputeLaplacian(p, z) - inside loop (MOST IMPORTANT)
 Timer timerInnerProduct_line6; // InnerProduct(p, z) - inside loop
 Timer timerSaxpyAndNorm_line8; // SaxpyAndNorm(z, r, alpha) - inside loop (merged version)
@@ -43,6 +44,7 @@ int main(int argc, char* argv[])
     timerNorm_line2.Reset();
     timerCopy_line4.Reset();
     timerInnerProduct_line4.Reset();
+    timerLaplacianAndDot_line6.Reset();
     timerLaplacian_line6.Reset();
     timerInnerProduct_line6.Reset();
     timerSaxpyAndNorm_line8.Reset();
@@ -85,6 +87,7 @@ int main(int argc, char* argv[])
     timerNorm_line2.Print("Norm (line 2): ");
     timerCopy_line4.Print("Copy (line 4): ");
     timerInnerProduct_line4.Print("InnerProduct (line 4): ");
+    timerLaplacianAndDot_line6.Print("LaplacianAndDot (line 6, cumulative): ");
     timerLaplacian_line6.Print("ComputeLaplacian (line 6, cumulative): ");
     timerInnerProduct_line6.Print("InnerProduct (line 6): ");
     timerSaxpyAndNorm_line8.Print("SaxpyAndNorm (line 8): ");

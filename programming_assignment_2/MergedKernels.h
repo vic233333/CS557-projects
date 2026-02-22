@@ -17,3 +17,9 @@ void DoubleSaxpy(
     float (&p)[XDIM][YDIM][ZDIM],
     const float alpha,
     const float beta);
+
+// Merged: ComputeLaplacian(p, z) + InnerProduct(p, z)
+// Computes z = Lp, returns p·z = p·Lp, without writing z to memory
+float LaplacianAndDot(
+    const float (&p)[XDIM][YDIM][ZDIM],
+    float (&z)[XDIM][YDIM][ZDIM]);

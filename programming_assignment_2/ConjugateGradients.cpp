@@ -15,6 +15,7 @@ extern Timer timerSaxpy_line2; // Saxpy(z, f, r, -1) - outside loop
 extern Timer timerNorm_line2; // Norm(r) - outside loop
 extern Timer timerCopy_line4; // Copy(r, p) - outside loop
 extern Timer timerInnerProduct_line4; // InnerProduct(p, r) - outside loop
+extern Timer timerLaplacianAndDot_line6; // LaplacianAndDot(p, z) - inside loop (merged version)
 extern Timer timerLaplacian_line6; // ComputeLaplacian(p, z) - inside loop (MOST IMPORTANT)
 extern Timer timerInnerProduct_line6; // InnerProduct(p, z) - inside loop
 extern Timer timerSaxpyAndNorm_line8; // SaxpyAndNorm(z, r, alpha) - inside loop (merged version)
@@ -71,6 +72,11 @@ void ConjugateGradients(
         std::cout << "Residual norm (nu) after " << k << " iterations = " << nu << std::endl;
 
         // Algorithm : Line 6
+#ifdef USE_MERGED
+        timerLaplacianAndDot_line6.Restart();
+        float sigma = LaplacianAndDot(p, z);
+        timerLaplacianAndDot_line6.Pause();
+#else
         timerLaplacian_line6.Restart();
         ComputeLaplacian(p, z);
         timerLaplacian_line6.Pause();
@@ -78,6 +84,7 @@ void ConjugateGradients(
         timerInnerProduct_line6.Restart();
         float sigma = InnerProduct(p, z);
         timerInnerProduct_line6.Pause();
+#endif
 
         // Algorithm : Line 7
         float alpha = rho / sigma;
